@@ -30,7 +30,6 @@ struct DevNode
 
     ~DevNode()
     {
-        std::cout << "---closing \n";
         ::close( fd_ );
     }
 
