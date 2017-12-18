@@ -10,6 +10,8 @@ namespace
 struct DevNode
 {
     DevNode() = delete;
+    DevNode(DevNode&) = delete;
+    DevNode& operator=(const DevNode& other) = delete;
 
     DevNode( const char * path )
     {
@@ -70,7 +72,7 @@ int main( int argc, char **argv )
             auto n = read( fd, &ev, sizeof( ev ) );
             (void) n;
 
-            if ( ev.type == EV_KEY )
+            if ( EV_KEY == ev.type )
             {
                 printf( "event timestamp: %ld.%06ld code: %d, value: %d \n",
                         ev.time.tv_sec,
