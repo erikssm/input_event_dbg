@@ -51,14 +51,13 @@ int main( int argc, char **argv )
     try
     {
 
-        const char *dev;
         if ( argc <= 1 )
         {
             std::cout << "usage: " << argv[0] << " path_to_input_event_device_node" << std::endl;
             return 1;
         }
 
-        dev = argv[1];
+        const char *dev = argv[1];
 
         std::cout << "---opening " << dev << "\n";
 
@@ -69,7 +68,7 @@ int main( int argc, char **argv )
         {
             struct input_event ev;
 
-            auto n = read( fd, &ev, sizeof( ev ) ); // Read from the buffer
+            auto n = read( fd, &ev, sizeof( ev ) );
             (void) n;
 
             if ( ev.type == EV_KEY )
